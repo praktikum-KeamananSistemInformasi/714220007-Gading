@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Algoritma Enkripsi</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #5cb85c;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #4cae4c;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #333;
+        }
+        .result {
+            background-color: #e9ecef;
+            border-left: 6px solid #5cb85c;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+        function encrypt(plainText, key, algorithm) {
+            let cipherText;
+            if (algorithm === "AES") {
+                cipherText = CryptoJS.AES.encrypt(plainText, key).toString();
+            } else if (algorithm === "DES") {
+                cipherText = CryptoJS.DES.encrypt(plainText, key).toString();
+            } else if (algorithm === "Blowfish") {
+                cipherText = CryptoJS.Blowfish.encrypt(plainText, key).toString();
+            }
+            return cipherText;
+        }
+
+        function decrypt(cipherText, key, algorithm) {
+            let plainText;
+            if (algorithm === "AES") {
+                plainText = CryptoJS.AES.decrypt(cipherText, key).toString(CryptoJS.enc.Utf8);
+            } else if (algorithm === "DES") {
+                plainText = CryptoJS.DES.decrypt(cipherText, key).toString(CryptoJS.enc.Utf8);
+            } else if (algorithm === "Blowfish") {
+                plainText = CryptoJS.Blowfish.decrypt(cipherText, key).toString(CryptoJS.enc.Utf8);
+            }
+            return plainText;
+        }
+
+        function handleEncryption() {
+            const plainText = document.getElementById("plainText").value;
+            const key = document.getElementById("key").value;
+            const algorithm = document.getElementById("algorithm").value;
+
+            const encryptedText = encrypt(plainText, key, algorithm);
+            document.getElementById("encryptedText").innerText = `Encrypted: ${encryptedText}`;
+            document.getElementById("decryptionResult").innerText = '';
+        }
+
+        function handleDecryption() {
+            const cipherText = document.getElementById("encryptedText").innerText.replace("Encrypted: ", "");
+            const key = document.getElementById("key").value;
+            const algorithm = document.getElementById("algorithm").value;
+
+            const decryptedText = decrypt(cipherText, key, algorithm);
+            document.getElementById("decryptionResult").innerText = `Decrypted: ${decryptedText}`;
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Pilih Algoritma Enkripsi</h1>
+        <label for="plainText">Teks yang akan dienkripsi:</label>
+        <input type="text" id="plainText" placeholder="Masukkan teks di sini...">
+        
+        <label for="key">Kunci:</label>
+        <input type="text" id="key" placeholder="Masukkan kunci di sini...">
+        
+        <label for="algorithm">Pilih Algoritma:</label>
+        <select id="algorithm">
+            <option value="AES">AES</option>
+            <option value="DES">DES</option>
+            <option value="Blowfish">Blowfish</option>
+        </select>
+        
+        <button onclick="handleEncryption()">Enkripsi</button>
+        <button onclick="handleDecryption()">Dekripsi</button>
+        
+        <h2>Hasil Enkripsi</h2>
+        <div class="result" id="encryptedText"></div>
+        <h2>Hasil Dekripsi</h2>
+        <div class="result" id="decryptionResult"></div>
+    </div>
+</body>
+</html>
