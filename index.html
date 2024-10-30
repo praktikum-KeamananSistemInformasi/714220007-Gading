@@ -3,34 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pilih Algoritma Enkripsi</title>
+    <title>Pengenalan Sistem Keamanan Jaringan</title>
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
-    <script src="script.js"></script>
 </head>
 <body>
-    <div class="container">
-        <h1>Pilih Algoritma Enkripsi</h1>
-        <label for="plainText">Teks yang akan dienkripsi:</label>
-        <input type="text" id="plainText" placeholder="Masukkan teks di sini...">
-        
-        <label for="key">Kunci:</label>
-        <input type="text" id="key" placeholder="Masukkan kunci di sini...">
-        
-        <label for="algorithm">Pilih Algoritma:</label>
-        <select id="algorithm">
-            <option value="AES">AES</option>
-            <option value="DES">DES</option>
-            <option value="Blowfish">Blowfish</option>
-        </select>
-        
-        <button onclick="handleEncryption()">Enkripsi</button>
-        <button onclick="handleDecryption()">Dekripsi</button>
-        
-        <h2>Hasil Enkripsi</h2>
-        <div class="result" id="encryptedText"></div>
-        <h2>Hasil Dekripsi</h2>
-        <div class="result" id="decryptionResult"></div>
-    </div>
+    <header>
+        <h1>Pengenalan Sistem Keamanan Jaringan</h1>
+        <p>Selamat datang di kursus pengenalan sistem keamanan jaringan. Di sini Anda akan belajar tentang prinsip dasar keamanan jaringan, ancaman, dan cara mitigasinya.</p>
+    </header>
+    <main>
+        <section>
+            <h2>Tugas yang Telah Dikerjakan</h2>
+            <div class="button-container">
+                <a href="/encode&decode/index.html" class="button">Tugas 1: Enkripsi</a>
+                <a href="/stride&dread/index.html" class="button">Tugas 2: Penilaian Risiko</a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Pengenalan Sistem Keamanan Jaringan. All rights reserved.</p>
+    </footer>
 </body>
 </html>

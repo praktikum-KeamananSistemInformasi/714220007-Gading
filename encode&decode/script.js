@@ -10,6 +10,9 @@ function encrypt(plainText, key, algorithm) {
     return cipherText;
 }
 
+function goBack(){
+    window.location.href = "../index.html"
+}
 function decrypt(cipherText, key, algorithm) {
     let plainText;
     if (algorithm === "AES") {

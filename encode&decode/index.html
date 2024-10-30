@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pilih Algoritma Enkripsi</title>
+    <link rel="stylesheet" href="/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Pilih Algoritma Enkripsi</h1>
+        <label for="plainText">Teks yang akan dienkripsi:</label>
+        <input type="text" id="plainText" placeholder="Masukkan teks di sini...">
+        
+        <label for="key">Kunci:</label>
+        <input type="text" id="key" placeholder="Masukkan kunci di sini...">
+        
+        <label for="algorithm">Pilih Algoritma:</label>
+        <select id="algorithm">
+            <option value="AES">AES</option>
+            <option value="DES">DES</option>
+            <option value="Blowfish">Blowfish</option>
+        </select>
+        
+        <button onclick="handleEncryption()">Enkripsi</button>
+        <button onclick="handleDecryption()">Dekripsi</button>
+        <button onclick="goBack()">Kembali</button>
+        
+        <h2>Hasil Enkripsi</h2>
+        <div class="result" id="encryptedText"></div>
+        <h2>Hasil Dekripsi</h2>
+        <div class="result" id="decryptionResult"></div>
+    </div>
+</body>
+</html>

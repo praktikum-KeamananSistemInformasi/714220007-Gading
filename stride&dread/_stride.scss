@@ -1,0 +1,75 @@
+$light-red: #ffcccc;
+$light-yellow: #fff3cd;
+$light-green: #d4edda;
+$background-color: #f4f4f4;
+$button-bg: #28a745;
+$button-bg-hover: #218838;
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+
+    h2 {
+        color: #333;
+        text-align: center;
+    }
+}
+
+.input-group {
+    margin-bottom: 10px;
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    input, textarea, select {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+    }
+}
+
+button {
+    padding: 10px 15px;
+    background-color: $button-bg;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 10px;
+
+    &:hover {
+        background-color: $button-bg-hover;
+    }
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+
+    th, td {
+        border: 1px solid #ddd;
+        padding: 10px;
+        text-align: left;
+    }
+
+    th {
+        background-color: $background-color;
+    }
+}
+
+// Highlight colors for risk priority
+.high-risk {
+    background-color: $light-red; // Light red for high risk
+}
+
+.medium-risk {
+    background-color: $light-yellow; // Light yellow for medium risk
+}
+
+.low-risk {
+    background-color: $light-green; // Light green for low risk
+}
