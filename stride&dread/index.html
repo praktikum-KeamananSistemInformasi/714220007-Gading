@@ -1,76 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Analisis Ancaman dan Penilaian Risiko</title>
-    <link rel="stylesheet" href="/style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
     <h2>Input Aset untuk Analisis Ancaman</h2>
     <div class="input-group">
-        <label for="assetName">Nama Aset:</label>
-        <select id="assetName" onchange="setThreatType()">
-            <option value="">Pilih Aset</option>
-            <option value="Server Aplikasi Web">Server Aplikasi Web</option>
-            <option value="Database Utama">Database Utama</option>
-            <option value="Server API Eksternal">Server API Eksternal</option>
-            <option value="Data Pengguna">Data Pengguna</option>
-            <option value="Jaringan Internal">Jaringan Internal</option>
-            <option value="Aplikasi Mobile">Aplikasi Mobile</option>
-            <option value="Sistem Monitoring">Sistem Monitoring</option>
-            <option value="Backup dan Recovery System">Backup dan Recovery System</option>
-        </select>
+      <label for="assetName">Nama Aset:</label>
+      <select id="assetName" onchange="setThreatType()">
+        <option value="">Pilih Aset</option>
+        <option value="Server Aplikasi Web">Server Aplikasi Web</option>
+        <option value="Database Utama">Database Utama</option>
+        <option value="Server API Eksternal">Server API Eksternal</option>
+        <option value="Data Pengguna">Data Pengguna</option>
+        <option value="Jaringan Internal">Jaringan Internal</option>
+        <option value="Aplikasi Mobile">Aplikasi Mobile</option>
+        <option value="Sistem Monitoring">Sistem Monitoring</option>
+        <option value="Backup dan Recovery System">
+          Backup dan Recovery System
+        </option>
+      </select>
     </div>
     <div class="input-group">
-        <label for="threat">Jenis Ancaman (STRIDE):</label>
-        <input type="text" id="threat" readonly style="background-color: #f4f4f4;">
+      <label for="threat">Jenis Ancaman (STRIDE):</label>
+      <input
+        type="text"
+        id="threat"
+        readonly
+        style="background-color: #f4f4f4"
+      />
     </div>
     <div class="input-group">
-        <label for="damage">Damage Potential (D):</label>
-        <input type="number" id="damage" min="1" max="10" placeholder="Nilai 1-10" oninput="calculateTotalScore()">
+      <label for="damage">Damage Potential (D):</label>
+      <input
+        type="number"
+        id="damage"
+        min="1"
+        max="10"
+        placeholder="Nilai 1-10"
+        oninput="calculateTotalScore()"
+      />
     </div>
     <div class="input-group">
-        <label for="reproducibility">Reproducibility (R):</label>
-        <input type="number" id="reproducibility" min="1" max="10" placeholder="Nilai 1-10" oninput="calculateTotalScore()">
+      <label for="reproducibility">Reproducibility (R):</label>
+      <input
+        type="number"
+        id="reproducibility"
+        min="1"
+        max="10"
+        placeholder="Nilai 1-10"
+        oninput="calculateTotalScore()"
+      />
     </div>
     <div class="input-group">
-        <label for="exploitability">Exploitability (E):</label>
-        <input type="number" id="exploitability" min="1" max="10" placeholder="Nilai 1-10" oninput="calculateTotalScore()">
+      <label for="exploitability">Exploitability (E):</label>
+      <input
+        type="number"
+        id="exploitability"
+        min="1"
+        max="10"
+        placeholder="Nilai 1-10"
+        oninput="calculateTotalScore()"
+      />
     </div>
     <div class="input-group">
-        <label for="affectedUsers">Affected Users (A):</label>
-        <input type="number" id="affectedUsers" min="1" max="10" placeholder="Nilai 1-10" oninput="calculateTotalScore()">
+      <label for="affectedUsers">Affected Users (A):</label>
+      <input
+        type="number"
+        id="affectedUsers"
+        min="1"
+        max="10"
+        placeholder="Nilai 1-10"
+        oninput="calculateTotalScore()"
+      />
     </div>
     <div class="input-group">
-        <label for="discoverability">Discoverability (D):</label>
-        <input type="number" id="discoverability" min="1" max="10" placeholder="Nilai 1-10" oninput="calculateTotalScore()">
+      <label for="discoverability">Discoverability (D):</label>
+      <input
+        type="number"
+        id="discoverability"
+        min="1"
+        max="10"
+        placeholder="Nilai 1-10"
+        oninput="calculateTotalScore()"
+      />
     </div>
-    <button onclick="addAsset()">Tambahkan Aset dengan Penilaian Risiko</button>
-    <button onclick="goBack()">Kembali</button>
-
+    <div class="isi-button">
+      <button onclick="addAsset()">
+        Tambahkan Aset dengan Penilaian Risiko
+      </button>
+      <button onclick="goBack()">Kembali</button>
+    </div>
     <h2>Daftar Aset dan Penilaian Risiko</h2>
     <table id="assetTable">
-        <thead>
-            <tr>
-                <th>Nama Aset</th>
-                <th>Jenis Ancaman</th>
-                <th>D (Damage)</th>
-                <th>R (Reproducibility)</th>
-                <th>E (Exploitability)</th>
-                <th>A (Affected Users)</th>
-                <th>D (Discoverability)</th>
-                <th>Total Skor</th>
-                <th>Prioritas Risiko</th>
-                <th>Langkah Mitigasi</th>
-                <th>Penjelasan</th>
-                <th>Aksi</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-        </tbody>
+      <thead>
+        <tr>
+          <th>Nama Aset</th>
+          <th>Jenis Ancaman</th>
+          <th>D (Damage)</th>
+          <th>R (Reproducibility)</th>
+          <th>E (Exploitability)</th>
+          <th>A (Affected Users)</th>
+          <th>D (Discoverability)</th>
+          <th>Total Skor</th>
+          <th>Prioritas Risiko</th>
+          <th>Langkah Mitigasi</th>
+          <th>Penjelasan</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
     </table>
     <script src="stride.js"></script>
-</body>
+  </body>
 </html>

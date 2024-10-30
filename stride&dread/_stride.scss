@@ -17,6 +17,7 @@ body {
 
 .input-group {
     margin-bottom: 10px;
+    padding: 0 50px;
 
     label {
         display: block;
@@ -29,6 +30,10 @@ body {
         border: 1px solid #ddd;
         border-radius: 4px;
     }
+}
+
+.isi-button{
+    padding: 0 50px;
 }
 
 button {

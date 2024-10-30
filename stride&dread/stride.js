@@ -59,7 +59,7 @@ function addAsset() {
     const totalScore = calculateTotalScore();
 
     let priority;
-    let explanation = ""; // Menambahkan variabel penjelasan
+    let explanation = "";
 
     if (totalScore >= 35) {
         priority = 'Tinggi';
@@ -122,15 +122,13 @@ function addAsset() {
         totalScore,
         priority,
         mitigation,
-        explanation // Menyimpan penjelasan
+        explanation
     };
 
-    // Simpan ke localStorage
     const existingAssets = JSON.parse(localStorage.getItem('assets')) || [];
     existingAssets.push(assetData);
     localStorage.setItem('assets', JSON.stringify(existingAssets));
 
-    // Tampilkan data di tabel
     displayAsset(assetData);
     clearForm();
 }
@@ -149,16 +147,14 @@ function displayAsset(assetData) {
     newRow.insertCell(7).innerText = assetData.totalScore;
     newRow.insertCell(8).innerText = assetData.priority;
     newRow.insertCell(9).innerText = assetData.mitigation;
-    newRow.insertCell(10).innerText = assetData.explanation; // Menambahkan penjelasan
+    newRow.insertCell(10).innerText = assetData.explanation;
 
-    // Menambahkan tombol hapus
     const deleteCell = newRow.insertCell(11);
     const deleteButton = document.createElement('button');
     deleteButton.innerText = 'Hapus';
     deleteButton.onclick = () => deleteAsset(assetData);
     deleteCell.appendChild(deleteButton);
 
-    // Menambahkan kelas risiko
     if (assetData.priority === 'Tinggi') {
         newRow.cells[8].classList.add('high-risk');
     } else if (assetData.priority === 'Sedang') {
@@ -171,16 +167,14 @@ function displayAsset(assetData) {
 function loadData() {
     const existingAssets = JSON.parse(localStorage.getItem('assets')) || [];
     const tableBody = document.getElementById('assetTable').getElementsByTagName('tbody')[0];
-    tableBody.innerHTML = ''; // Mengosongkan tabel sebelum memuat data
+    tableBody.innerHTML = '';
 
     existingAssets.forEach(displayAsset);
 }
 
 function deleteAsset(assetData) {
-    // Ambil data aset yang ada
     const existingAssets = JSON.parse(localStorage.getItem('assets')) || [];
-    
-    // Hapus aset dari array
+
     const updatedAssets = existingAssets.filter(asset => asset.assetName !== assetData.assetName || 
                                                          asset.threat !== assetData.threat || 
                                                          asset.damage !== assetData.damage ||
@@ -191,12 +185,10 @@ function deleteAsset(assetData) {
                                                          asset.totalScore !== assetData.totalScore ||
                                                          asset.priority !== assetData.priority ||
                                                          asset.mitigation !== assetData.mitigation);
-    
-    // Simpan kembali ke localStorage
+
     localStorage.setItem('assets', JSON.stringify(updatedAssets));
     
-    // Hapus baris dari tabel
-    loadData(); // Memuat ulang data untuk memperbarui tampilan tabel
+    loadData();
 }
 
 function clearForm() {
