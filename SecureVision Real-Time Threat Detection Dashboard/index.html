@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analisis Risiko STRIDE & DREAD</title>
+  <link rel="stylesheet" href="./src/style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Analisis Risiko STRIDE & DREAD</h1>
+    <div>
+      <label for="threat">Pilih Ancaman:</label>
+      <select id="threat">
+        <!-- Spoofing -->
+        <option value="spoofing">Spoofing (Akses tidak sah)</option>
+        <option value="credential_theft">Pencurian Kredensial</option>
+        <option value="phishing">Serangan Phishing</option>
+        <!-- Tampering -->
+        <option value="tampering">Tampering (Modifikasi data)</option>
+        <option value="code_injection">Injeksi Kode</option>
+        <option value="man_in_the_middle">Man-in-the-Middle (MITM)</option>
+        <!-- Repudiation -->
+        <option value="repudiation">Repudiation (Penyangkalan tindakan)</option>
+        <option value="unauthorized_transactions">Transaksi Tidak Sah</option>
+        <option value="log_forgery">Pemalsuan Log</option>
+        <!-- Information Disclosure -->
+        <option value="information_disclosure">Pengungkapan Informasi</option>
+        <option value="data_exfiltration">Ekstraksi Data</option>
+        <option value="sensitive_data_exposure">Paparan Data Sensitif</option>
+        <!-- Denial of Service -->
+        <option value="denial_of_service">Denial of Service (Gangguan Layanan)</option>
+        <option value="ddos_attack">Distributed Denial of Service (DDoS)</option>
+        <option value="resource_exhaustion">Penghabisan Sumber Daya</option>
+        <!-- Elevation of Privilege -->
+        <option value="elevation_of_privilege">Elevation of Privilege</option>
+        <option value="privilege_escalation">Eskalasi Hak Istimewa</option>
+        <option value="backdoor_access">Akses Backdoor</option>
+      </select>
+    </div>
+    <div id="dread-sliders">
+      <h2>Nilai Komponen DREAD:</h2>
+      <div>
+        <label for="damage">Kerusakan (Damage):</label>
+        <input type="range" id="damage" min="1" max="10" value="5">
+        <span id="damage-value">5</span>
+      </div>
+      <div>
+        <label for="reproducibility">Kemungkinan Berulang (Reproducibility):</label>
+        <input type="range" id="reproducibility" min="1" max="10" value="5">
+        <span id="reproducibility-value">5</span>
+      </div>
+      <div>
+        <label for="exploitability">Eksploitasi (Exploitability):</label>
+        <input type="range" id="exploitability" min="1" max="10" value="5">
+        <span id="exploitability-value">5</span>
+      </div>
+      <div>
+        <label for="affected-users">Pengguna Terpengaruh (Affected Users):</label>
+        <input type="range" id="affected-users" min="1" max="10" value="5">
+        <span id="affected-users-value">5</span>
+      </div>
+      <div>
+        <label for="discoverability">Keterdeteksian (Discoverability):</label>
+        <input type="range" id="discoverability" min="1" max="10" value="5">
+        <span id="discoverability-value">5</span>
+      </div>
+    </div>
+    <button id="analyze-risk-btn">Analisis Risiko</button>
+    <div id="output">
+      <h2>Hasil Analisis Risiko</h2>
+      <p id="risk-score"></p>
+      <h2>Rekomendasi Mitigasi</h2>
+      <p id="recommendation"></p>
+    </div>
+  </div>
+  <script src="./src/app.js"></script>
+</body>
+</html>
