@@ -1,3 +1,7 @@
+function goToLobby() {
+  window.location.href = "../index.html";
+}
+
 document.querySelectorAll('input[type="range"]').forEach(slider => {
   slider.addEventListener('input', function () {
     document.getElementById(`${this.id}-value`).innerText = this.value;
